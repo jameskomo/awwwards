@@ -100,15 +100,19 @@
   
  <div style="margin-top: 2%;" class="container">
     {% for image in images %}
-    <div class="card" style="width: 18rem;">
-        <img class="card-img-top" src="{{image.photo_image.url }}" alt="Website Photo">
-        <div class="card-body">
-          <h5 class="card-title"><strong>{{image_name}}</strong></h5>
-          <h6>From Kenya</h6> 
-          <h6>Posted on: {{image.pub_date}}</h6>
-          <a href="{% url 'profile'%}">By {{user.username}}</a>
-        </div>
-      </div>
+    <div class="row">
+      <div class="col">
+          <div class="card" style="width: 18rem;">
+              <img class="card-img-top" src="{{image.photo_image.url }}" alt="Website Photo">
+              <div class="card-body">
+                <h5 class="card-title"><strong>{{image_name}}</strong></h5>
+                <h6>From Kenya</h6> 
+                <h6>Posted on: {{image.pub_date}}</h6>
+                <a href="{% url 'profile'%}">By {{user.username}}</a>
+              </div>
+            </div>
+      </div>       
+    </div> 
   
  </div>
 

@@ -7,7 +7,6 @@ from django.contrib.auth.models import User
 class Image(models.Model):    
     image_name=models.CharField(max_length=60)
     image_caption = models.TextField()
-    image_comments = models.TextField()
     profile = models.ForeignKey(Profile, on_delete=models.CASCADE)
     pub_date = models.DateTimeField(auto_now_add=True)
     photo_image = models.ImageField(default="default.jpeg", upload_to = 'images/')
