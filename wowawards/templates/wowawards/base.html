@@ -68,7 +68,9 @@
           {% if user.is_authenticated %}
           
           <a class="nav-item nav-link" href="{% url 'profile'%}"><i style="size: 40px;" class="far fa-heart"></i></a>
+          <img src="{% if profile.profile_image %}{{ profile.profile_image.url }}{% else %}#{% endif %}" >
           <a class="nav-item nav-link" href="{% url 'profile'%}"><i class="far fa-user"></i></a>
+      
         <a class="nav-item nav-link" href="{% url 'logout'%}">LogOut</a>
       {% else %}
         <a class="nav-tem nav-link" href="{% url 'login'%}">REGISTER/LOGIN</a>
@@ -86,7 +88,7 @@
   <div class=" day-site jumbotron jumbotron-fluid">
       <div class="container">
         <h1 class="display-4">Site of the Day</h1>
-        <p class="lead">This is a modified jumbotron that occupies the entire horizontal space of its parent.</p>
+        <p class="lead">{{image.image_caption}}</p>
         <div class="daysite-buttons">
             <button type="button" class="btn" style=" border-radius: 50px; margin-bottom: 0%; background-color: #21aa93;">Visit Site</button>
             <button type="button" class="btn btn-outline-secondary" style="border-radius: 50px; margin-bottom:0%;">Collect</button>
