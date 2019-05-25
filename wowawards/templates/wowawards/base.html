@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     
-    <title>Awwwards</title>
+    <title>Awwwards-Website Awards-Best Design Awards</title>
 
     {% block styles %}
        {% bootstrap_css %}
@@ -20,6 +20,41 @@
 </head>
 <body id="main-page">
       {% block content %}
+
+    <!-- Top Nav Bar -->
+    <nav class="navbar navbar-dark bg-light navbar-expand-lg ">
+
+      <a style="color: blue; size: 100%; " class="navbar-brand" href="{%url 'wowawards-home' %}"><i class="fab fa-instagram"></i></a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+    
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item active">
+            <a style="font-family: 'Pacifico', cursive; color:black; font-size: 30px;" class="nav-link" href="{%url 'wowawards-home' %}">Instagram <span class="sr-only">(current)</span></a>
+          </li>
+          
+          <form class="form-inline my-2 my-lg-0" role="search" action="{% url 'users-search' %}">
+            <input class="form-control mr-sm-2" type="search" placeholder="Search Profile" aria-label="Search">
+            <button class="btn btn-light my-2 my-sm-0" type="submit"> <i class="fas fa-search"></i></button>
+          </form>
+          <a style="font-family: 'Rokkitt', serif; color:black; font-size: 30px;" class="nav-link" href="{%url 'wowawards-new-post' %}"><i class="fas fa-upload"></i> <span class="sr-only">(current)</span></a>
+        </ul>
+        
+
+        
+        <a class="nav-item nav-link" href="{% url 'profile'%}"><i style="size: 40px;" class="far fa-heart"></i></a>
+        <a class="nav-item nav-link" href="{% url 'profile'%}"><i class="far fa-user"></i></a>
+      <a class="nav-item nav-link" href="{% url 'logout'%}">LogOut</a>
+      <a class="nav-tem nav-link" href="{% url 'login'%}">Log In</a>
+      <a class="nav-tem nav-link" href="{% url 'register'%}">Register</a>
+  
+        
+      </div>
+    </nav>
+
+    <!-- Top Nav Bar End -->
     
     <nav class="navbar navbar-dark bg-light navbar-expand-lg ">
 
