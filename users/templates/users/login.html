@@ -1,0 +1,33 @@
+{% extends 'wowawards/base.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+{{ block.super }}
+
+<!-- card -->
+<div class="card" style="max-width: 30rem; margin-left: 30%; margin-top: 5%; padding: 2%;">
+        <div class="card-header">
+                Log In
+        </div>
+        <div class="content-section">
+                <form style="margin-left: 2;" method="POST">
+                    {% csrf_token %}
+                    <fieldset class="form-group">
+                        
+                        {{form | crispy}}
+                    </fieldset>
+                    <div class="form-group">
+                        <button class="btn btn-outline-info" type="submit">Log In</button>
+                    </div>        
+                </form>
+                <div class="border-top pt-3">
+                    <small class="text-muted">
+                        Need an account? <a   class="margin left-2" href="{% url 'register'%}">Sign Up</a>
+                    </small>
+                </div>
+            </div>
+        </div>
+<!-- card end -->
+
+
+
+{% endblock %}

@@ -1,0 +1,13 @@
+{% extends 'wowawards/base.html' %}
+{% block content %}
+{{ block.super }}
+<div class="card" style="width: 18rem; margin-left: 40%; margin-top: 10%;">
+        <div class="card-body">
+        <small class="text-muted">
+          <h5 class="card-title">Log Out</h5>
+          <p class="card-text">You have been Logged Out.</p>
+          <a href="{% url 'login' %}">Log In Again</a>
+        </small>
+        </div>
+      </div>
+{% endblock content %}

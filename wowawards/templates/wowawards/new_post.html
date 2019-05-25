@@ -1,0 +1,20 @@
+{% extends 'wowawards/base.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+{{ block.super }}
+
+<!-- Posting Form -->
+<div style="margin: 30%; margin-top: 2%; border-color: black; "  class="card-body">
+    <form method="POST" enctype="multipart/form-data" action="{% url 'wowawards-new-post'%}">
+        {% csrf_token %}
+        <fieldset class="form-group">
+            <legend class="border-bottom mb-4"><strong>Share Post</strong> </legend>
+            {{np_form|crispy}}            
+        </fieldset>
+        <div class="form-group">
+            <button class="btn btn-outline-info" type="submit">Post</button>
+        </div>
+    </form>
+</div>
+  <!-- Posting Form End -->
+{% endblock %}

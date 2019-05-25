@@ -1,0 +1,5 @@
+Hello {{name}}
+
+Your Account on Instagram has been successfully created. Login to explore more.
+
+K.O.M.O Team

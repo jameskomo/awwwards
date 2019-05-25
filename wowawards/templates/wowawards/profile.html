@@ -1,0 +1,25 @@
+{% extends 'wowawards/base.html' %}
+
+
+{% block content %}
+
+{{block.super}}
+{% for image in images %}
+
+<div class="card text-center">
+    <div class="card-header">
+        <img class="rounded-circle" src="{{user.profile.profile_image.url}}" alt="Instagram image">
+    </div>
+    <div class="card-body">
+        <h4 class="card-title">Posted by: {{image.image_name}}</h4><a href="#" class="btn btn-primary">Follow</a>
+        <p class="card-text">Caption: {{image.image_caption}}</p>
+        <p class="card-text">Caption: {{image.image_comments}}</p>
+      <a href="#" class="btn btn-primary">Like</a>
+    </div>
+    <div class="card-footer text-muted">
+        <h4 class="card-title">Posted on: {{image.pub_date }}</h4
+    </div>
+  </div>
+
+  {% endfor %}
+ {% endblock %}

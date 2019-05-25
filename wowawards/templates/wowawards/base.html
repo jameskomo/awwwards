@@ -1,0 +1,125 @@
+{% load bootstrap4 %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    
+    <title>Awwwards</title>
+
+    {% block styles %}
+       {% bootstrap_css %}
+       <link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}">
+       <link href="https://fonts.googleapis.com/css?family=Pacifico|Rokkitt&display=swap" rel="stylesheet">
+       <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
+       
+    {% endblock %}
+    
+</head>
+<body id="main-page">
+      {% block content %}
+    
+    <nav class="navbar navbar-dark bg-light navbar-expand-lg ">
+
+        <a style="color: blue; size: 100%; " class="navbar-brand" href="{%url 'wowawards-home' %}"><i class="fab fa-instagram"></i></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+      
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+              <a style="font-family: 'Pacifico', cursive; color:black; font-size: 30px;" class="nav-link" href="{%url 'wowawards-home' %}">Instagram <span class="sr-only">(current)</span></a>
+            </li>
+            
+            <form class="form-inline my-2 my-lg-0" role="search" action="{% url 'users-search' %}">
+              <input class="form-control mr-sm-2" type="search" placeholder="Search Profile" aria-label="Search">
+              <button class="btn btn-light my-2 my-sm-0" type="submit"> <i class="fas fa-search"></i></button>
+            </form>
+            <a style="font-family: 'Rokkitt', serif; color:black; font-size: 30px;" class="nav-link" href="{%url 'wowawards-new-post' %}"><i class="fas fa-upload"></i> <span class="sr-only">(current)</span></a>
+          </ul>
+          
+          {% if user.is_authenticated %}
+          
+          <a class="nav-item nav-link" href="{% url 'profile'%}"><i style="size: 40px;" class="far fa-heart"></i></a>
+          <a class="nav-item nav-link" href="{% url 'profile'%}"><i class="far fa-user"></i></a>
+        <a class="nav-item nav-link" href="{% url 'logout'%}">LogOut</a>
+      {% else %}
+        <a class="nav-tem nav-link" href="{% url 'login'%}">Log In</a>
+        <a class="nav-tem nav-link" href="{% url 'register'%}">Register</a>
+      {% endif %}
+          
+        </div>
+      </nav>
+
+    
+    {%endblock%}
+    
+    {% if messages %}
+    {% for message in messages %}
+    <div class="alert alert-warning">{{message}}</div>
+    {% endfor %}
+  {% endif %}
+  <!-- Bootstrap Utility -->
+  
+  <div style="margin-top: 2%;" class="container">
+    {% for image in images %}
+    <div class="row">
+        <div class="card col-xs-12 col-sm-12 col-md-5 col-lg-5 mx-auto" style="font-family: 'Open Sans', sans-serif; padding:0;">
+            <button type="button" class="btn btn-light btn-lg" data-toggle="modal" data-target="#myModal{{image.id}}">  
+          <div class="card-header px-0 py-0">
+                <img class="card-img-top img-responsive" src="{{image.photo_image.url}}" alt="{{image.image_name}}">
+            </div>
+ 
+            <div class="card-body py-1">
+                <h5 class="card-text">{{image.image_name}}</h5>
+                <ul>
+                  <i class="far fa-comment"></i>
+                  <i class="far fa-heart"></i>
+                </ul>
+                <a href="{% url 'profile'%}">Delete</a>
+                <a href="{% url 'profile'%}">Update</a>
+                </button>
+            </div>
+        </div>
+    </div>
+  
+ </div>
+
+  <!-- Bootstrap Utility END -->
+  
+                <!-- modal content -->
+    <div class="modal" id="myModal{{image.id}}" role="dialog">
+        <div class="modal-dialog">
+    
+            <div class="modal-content">
+                <div class="modal-header">
+                  <h3>Posted by: {{user.username}}</h3>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>              
+                    
+                </div>
+    
+                <div class="modal-body">
+                    <img src="{{image.photo_image.url }}" alt="" width="100%" height="100%">
+                    <br>
+                    <p><strong>Image Name: </strong>{{image.image_name }}</p>
+                    <p><strong>Caption: </strong>{{ image.image_caption }}</p>
+                    <br>
+                    <h5 class="modal-title"><strong>Posted On: </strong>{{ image.pub_date }}</h5>
+                    <br>
+                  
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endfor %}
+     {% block scripts %}
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script src="{% static 'js/main.js' %}"></script>
+     {% bootstrap_javascript %}
+    {% endblock %}
+</body>
+</html>
