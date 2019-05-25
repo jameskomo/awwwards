@@ -1,19 +1,43 @@
-h1
-{
-  color: green;
-}
 body {
   background-color: #f1f1f1;
 }
 #main-page{
-  background-image: linear-gradient( 113.5deg,  rgba(234,234,234,1) 22.3%, rgba(201,234,211,1) 56.6%, rgba(255,180,189,1) 90.9% );
+  background: url("/media/images/bg-background-3.jpg") 50% 0 no-repeat fixed;
   }
 
 #images-display {
   height: 40%;
   width: 40%;
 }
-. navbar {
-  background-image: radial-gradient( circle 368px at -5.4% 62.1%,  rgba(252,85,85,1) 1.7%, rgba(249,194,132,1) 19%, rgba(205,251,150,1) 35.3%, rgba(246,248,155,1) 52.2%, rgba(164,251,247,1) 68.1%, rgba(183,185,252,1) 82.4%, rgba(253,176,194,0.96) 93.2% );
-}
 
+.top-nav {
+  font-family: 'Raleway', sans-serif;
+  border-style: solid;
+  border-block-color: grey;
+  border-width: thin;
+}
+.sm-logos {
+  margin-right: 0%;
+}
+.day-site {
+  background: url("/media/images/bg-background-1.jpg") 50% 0 no-repeat fixed;
+  height: 350px;
+  padding: 100px 0 0 0;
+}
+.sites-of-day {
+  background: url("/media/images/bg-background-4.jpg") 50% 0 no-repeat fixed;
+  height: 50px;
+  padding: 100px 0 0 0;
+  margin-top: 0%;
+}
+.daysite1 {
+  margin-left: 10px;
+  font-family: 'Raleway', sans-serif; color:black;
+  font-size: 18px;
+}
+.daysite2 {
+  margin-left: 450px;
+  font-family: 'Raleway', sans-serif; color:black;
+  font-size: 18px;
+  
+}
