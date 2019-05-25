@@ -22,8 +22,9 @@ body {
 }
 .day-site {
   background: url("/media/images/bg-background-1.jpg") 50% 0 no-repeat fixed;
-  height: 350px;
+  height: 550px;
   padding: 100px 0 0 0;
+  color: #f1f1f1;
 }
 .sites-of-day {
   background: url("/media/images/bg-background-4.jpg") 50% 0 no-repeat fixed;
@@ -42,6 +43,9 @@ body {
   font-size: 18px;
   
 }
-
+.daysite-button {
+  margin-bottom: 0%;
+  
+}
 /* #Search Bar styling */
 
