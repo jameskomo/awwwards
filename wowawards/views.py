@@ -57,5 +57,8 @@ def search_image(request):
         return render(request, 'users/search.html',{"message":message})
 
 class ProjectsList(APIView):
-    def 
+    def get(self, request, format=None):
+        all_projects=ProjectsApi.objects.all()
+        serializers=ProjectSerializer(all_projects, many=True)
+        return Response(serializers.data)
 
