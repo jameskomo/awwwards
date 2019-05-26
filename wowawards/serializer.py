@@ -10,6 +10,6 @@ class ProfileSerializer(serializers.ModelSerializer):
 class ProjectSerializer(serializers.ModelSerializer):
     class Meta:
         model=ProjectsApi
-        fields=('project_title', 'project_description', 'profile', 'pub_date', 'project_image ')
+        fields=('project_title', 'project_description', 'profile', 'pub_date', 'project_image')
 
      
