@@ -38,6 +38,14 @@ class Image(models.Model):
         images = cls.objects.filter(pub_date__date = date)
         return images
 
+class ProjectsApi(models.Model):
+    project_title=models.CharField(max_length=60)
+    project_description = models.TextField()
+    profile = models.ForeignKey(Profile, on_delete=models.CASCADE)
+    pub_date = models.DateTimeField(auto_now_add=True)
+    project_image = models.ImageField(default="default.jpeg", upload_to = 'images/')
+
+
 
 
     
