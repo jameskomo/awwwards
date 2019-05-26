@@ -21,6 +21,7 @@ from users import views as user_views
 from django.conf import settings
 from django.conf.urls.static import static
 from users import views
+from rest_framework.authtoken.views import obtain_auth_token
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -30,6 +31,7 @@ urlpatterns = [
     path('profile/', user_views.profile, name='profile'),
     url(r'^search/', views.search, name='users-search'),
     path('', include('wowawards.urls')), 
+    url(r'^api-token-auth/', obtain_auth_token),
 ]
 if settings.DEBUG:
     urlpatterns+=static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
