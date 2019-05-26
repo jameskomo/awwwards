@@ -9,6 +9,7 @@ from rest_framework.views import APIView
 from .models import ProjectsApi, ProfileApi
 from .serializer import ProjectSerializer, ProfileSerializer
 from rest_framework import status
+from .permissions import IsAdminOrReadOnly
 
 # Create your views here.
 # @login_required
@@ -58,6 +59,7 @@ def search_image(request):
         return render(request, 'users/search.html',{"message":message})
 
 class ProjectsList(APIView):
+    permission_classes = (IsAdminOrReadOnly,)
     def get(self, request, format=None):
         all_projects=ProjectsApi.objects.all()
         serializers=ProjectSerializer(all_projects, many=True)
@@ -72,6 +74,7 @@ class ProjectsList(APIView):
 
 
 class ProfileList(APIView):
+    permission_classes = (IsAdminOrReadOnly,)
     def get(self, request, format=None):
         all_profiles=ProfileApi.objects.all()
         serializers=ProfileSerializer(all_profiles, many=True)
