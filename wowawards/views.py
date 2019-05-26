@@ -10,7 +10,7 @@ from .models import ProjectsApi
 from .serializer import ProjectSerializer
 
 # Create your views here.
-@login_required
+# @login_required
 def home(request):
     context = {
         'images':Image.objects.all(),
