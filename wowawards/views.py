@@ -78,7 +78,7 @@ class ProfileList(APIView):
         return Response(serializers.data)
 
     def post(self, request, format=None):
-        serializers=ProfileSerializer(data=request.data)
+        serializers=ProfilSerializer(data=request.data)
         if serializers.is_valid():
             serializers.save()
             return Response(serializers.data, status=status.HTTP_201_CREATED)
