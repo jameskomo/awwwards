@@ -6,8 +6,8 @@ from .forms import NewPostForm
 from django.contrib.auth.decorators import login_required
 from rest_framework.response import Response
 from rest_framework.views import APIView
-from .models import ProjectsApi
-from .serializer import ProjectSerializer
+from .models import ProjectsApi, ProfileApi
+from .serializer import ProjectSerializer, ProfileSerializer
 
 # Create your views here.
 # @login_required
@@ -60,5 +60,11 @@ class ProjectsList(APIView):
     def get(self, request, format=None):
         all_projects=ProjectsApi.objects.all()
         serializers=ProjectSerializer(all_projects, many=True)
+        return Response(serializers.data)
+
+class ProfileList(APIView):
+    def get(self, request, format=None):
+        all_profiles=ProfileApi.objects.all()
+        serializers=ProfileSerializer(all_profiles, many=True)
         return Response(serializers.data)
 

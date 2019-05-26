@@ -6,7 +6,7 @@ from . import views
 
 urlpatterns=[
     path('register/', views.register, name='wowawards-register'),  
-     url(r'^api/profiles/$', views.ProfileList.as_view())
+    
     
 ]
 if settings.DEBUG:

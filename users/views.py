@@ -3,10 +3,7 @@ from .email import send_welcome_email
 from django.contrib import messages
 from .forms import UserRegisterForm, UserUpdateForm, ProfileUpdateForm
 from django.contrib.auth.decorators import login_required
-from rest_framework.response import Response
-from rest_framework.views import APIView
-from .models import ProfileApi
-from .serializer import ProfileSerializer
+
 
 def register(request):
     if request.method=='POST':
@@ -70,8 +67,4 @@ def register(request):
         form=UserRegisterForm()
     return render (request, 'users/register.html', {'form': form})
 
-class ProfileList(APIView):
-    def get(self, request, format=None):
-        all_profiles=ProfileApi.objects.all()
-        serializers=ProfileSerializer(all_profiles, many=True)
-        return Response(serializers.data)
+
