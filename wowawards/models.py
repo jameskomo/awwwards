@@ -5,26 +5,26 @@ from django.contrib.auth.models import User
 
 # Create your models here.
 class Image(models.Model):    
-    image_name=models.CharField(max_length=60)
-    image_caption = models.TextField()
+    project_title=models.CharField(max_length=60)
+    project_description = models.TextField()
     profile = models.ForeignKey(Profile, on_delete=models.CASCADE)
     pub_date = models.DateTimeField(auto_now_add=True)
-    photo_image = models.ImageField(default="default.jpeg", upload_to = 'images/')
+    project_image = models.ImageField(default="default.jpeg", upload_to = 'images/')
 
     def __str__(self):
-        return self.image_name
+        return self.project_title
 
-    def save_image(self):
+    def save_project(self):
         self.save()
     
-    def delete_image(self):
+    def delete_project(self):
         Image.objects.filter(id = self.pk).delete() 
     
-    def update_image(self, **kwargs):
+    def update_project(self, **kwargs):
         self.objects.filter(id = self.pk).update(**kwargs)
     
-    def update_caption(self, **kwargs):
-        self.objects.filter(image_caption).update(**kwargs)
+    def update_project(self, **kwargs):
+        self.objects.filter(project_description).update(**kwargs)
 
     class Meta:
         ordering = ['-pub_date']    
@@ -38,13 +38,7 @@ class Image(models.Model):
         images = cls.objects.filter(pub_date__date = date)
         return images
 
-class Comment(models.Model):
-    comment_content = models.CharField(max_length=300)
-    username = models.ForeignKey(User,on_delete=models.CASCADE)
-    image = models.ForeignKey(Image,on_delete=models.CASCADE)
 
-    def save_comment(self):
-        self.save()
 
     
 

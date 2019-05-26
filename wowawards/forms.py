@@ -8,7 +8,7 @@ class NewPostForm(forms.ModelForm):
     
     class Meta:
         model=Image
-        fields=['image_name', 'image_caption', 'photo_image', 'profile']
-        exclude=['image_comments']
+        fields=['project_title', 'project_description', 'project_image', 'profile']
+        
 
 
