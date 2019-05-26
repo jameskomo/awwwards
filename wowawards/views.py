@@ -4,6 +4,10 @@ from django.http import Http404
 from .models import Image, Profile
 from .forms import NewPostForm
 from django.contrib.auth.decorators import login_required
+from rest_framework.response import Response
+from rest_framework.views import APIView
+from .models import ProjectsApi
+from .serializer import ProjectSerializer
 
 # Create your views here.
 @login_required
@@ -52,4 +56,6 @@ def search_image(request):
         message = "You haven't searched for any term"
         return render(request, 'users/search.html',{"message":message})
 
+class ProjectsList(APIView):
+    def 
 
