@@ -34,6 +34,7 @@ INSTALLED_APPS = [
     'wowawards.apps.WowawardsConfig',
     'users.apps.UsersConfig',
     'bootstrap4',
+    'star_ratings',
     'crispy_forms',
     'rest_framework',
     'rest_framework.authtoken',
