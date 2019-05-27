@@ -32,6 +32,7 @@ urlpatterns = [
     url(r'^search/', views.search, name='users-search'),
     path('', include('wowawards.urls')), 
     url(r'^api-token-auth/', obtain_auth_token),
+    
 ]
 if settings.DEBUG:
     urlpatterns+=static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

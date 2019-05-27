@@ -113,7 +113,11 @@
                 <p>From <strong>Kenya</strong></p>
                 <p>{{image.pub_date}}</p>
                 <br>
-                <p>By <strong>{{user.profile}}</strong></p>
+                <p>By <strong>{{user.username}}</strong></p>
+                <h2>Overall Rating</h2>
+                <h3>Design: {{ image.avg_design }}</h3>
+                <h3>Usability: {{ image.avg_usability}}</h3> 
+                <h3>Content: {{ image.avg_content}} </h3>
 </div>
 
 

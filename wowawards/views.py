@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.contrib import messages
 from django.http import Http404
-from .models import Image, Profile
+from .models import Image, Profile, Ratings
 from .forms import NewPostForm
 from django.contrib.auth.decorators import login_required
 from rest_framework.response import Response
@@ -10,6 +10,7 @@ from .models import ProjectsApi, ProfileApi
 from .serializer import ProjectSerializer, ProfileSerializer
 from rest_framework import status
 from .permissions import IsAdminOrReadOnly
+from django.db.models import Avg
 
 # Create your views here.
 # @login_required
@@ -19,6 +20,17 @@ def home(request):
         'profiles': Profile.objects.all()
     }
     return render(request, ('wowawards/base.html'), context)
+
+@login_required
+def index(request):
+    images = Image.objects.order_by('name').annotate(
+    avg_design=Avg('ratingsmodel__design'),
+    avg_usability=Avg('ratingsmodel__usability'),
+    avg_content=Avg('ratingsmodel__content'), 
+    )
+    context = {'images': images}
+
+    return render(request, 'wowawards/base.html', context)
 
 def profile(request):
     context = {

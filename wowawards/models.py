@@ -2,6 +2,7 @@ from django.db import models
 import datetime as dt 
 from users.models import Profile
 from django.contrib.auth.models import User
+from django.conf import settings
 
 # Create your models here.
 class Image(models.Model):    
@@ -34,9 +35,36 @@ class Image(models.Model):
         profiles = cls.objects.filter(Q(username__username=search_term))
         return profiles
     @classmethod
-    def todays_images(cls,date):
-        images = cls.objects.filter(pub_date__date = date)
-        return images
+    def todays_projects(cls,date):
+       projects = cls.objects.filter(pub_date__date = date)
+       return projects
+
+class Ratings(models.Model):
+
+    TEN_REVIEWS= (
+        ('10', '10'),
+        ('9', '9'),
+        ('8', '8'),
+        ('7', '7'),
+        ('6', '6'),
+        ('5', '5'),
+        ('4', '4'),
+        ('3', '3'),
+        ('2', '2'),
+        ('1', '1'),
+    )
+    user = models.ForeignKey(User, default=1, on_delete=models.CASCADE)
+    project = models.ForeignKey(Image, on_delete=models.CASCADE)
+    design = models.PositiveIntegerField(max_length=2, choices=TEN_REVIEWS, default="0")
+    usability= models.PositiveIntegerField(max_length=2, choices=TEN_REVIEWS, default="0")
+    content = models.PositiveIntegerField(max_length=2, choices= TEN_REVIEWS, default= "0")
+
+
+    class Meta:
+        verbose_name_plural = 'Ratings'
+
+    def __str__(self):
+        return str(self.project)
 
 class ProjectsApi(models.Model):
     project_title=models.CharField(max_length=60)
