@@ -99,5 +99,15 @@ class ProfileList(APIView):
             return Response(serializers.data, status=status.HTTP_201_CREATED)
         return Response(serializers.errors, status=status.HTTP_400_BAD_REQUEST)
 
-   
+def search_results(request):
 
+    if 'project' in request.GET and request.GET["project"]:
+        search_term = request.GET.get("project")
+        searched_projects = Image.search_by_project_title(search_term)
+        message = f"{search_term}"
+
+        return render(request, 'wowawards/base.html',{"message":message,"projects": searched_projects})
+
+    else:
+        message = "You haven't searched for any term"
+        return render(request, 'wowawards/base.html',{"message":message})

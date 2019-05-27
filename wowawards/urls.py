@@ -11,6 +11,7 @@ urlpatterns=[
     url(r'^search/', views.search_image, name='images-search'),
     url(r'^api/projects/$', views.ProjectsList.as_view()),
     url(r'^api/profiles/$', views.ProfileList.as_view()),
+    url(r'^search/', views.search_results, name='search_results'),
     
     
 ]

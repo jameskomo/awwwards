@@ -12,6 +12,11 @@ class Image(models.Model):
     pub_date = models.DateTimeField(auto_now_add=True)
     project_image = models.ImageField(default="default.jpeg", upload_to = 'images/')
 
+    @classmethod
+    def search_by_title(cls,search_term):
+        projects = cls.objects.filter(project_title__icontains=search_term)
+        return projects
+
     def __str__(self):
         return self.project_title
 
