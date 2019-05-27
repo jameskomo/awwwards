@@ -2,7 +2,7 @@
 
 ![Awwawards](https://www.wns.com/Portals/0/Images/AwardsCardImage/537/WNS-BW-HR-Excellence-Award_card.jpg)
 
-This is a clone of the popular photo app Instagram made in Python using Django Framework. Users are able to sign in to the application to start using, upload their pictures to the application, see their profile with all their pictures, follow other users and see their pictures on their timeline and like a picture and leave a comment on it.
+This is a Python Django application similar to Awwawards; The application will allow a user to post a project he/she has created and get it reviewed by his/her peers. A project can be rated based on 3 different criteria Design, Usability and Content. These criteria can be reviewed on a scale of 1-10 and the average score is taken. As a user, you will be able to:  -View posted projects and their details  -Post a project to be rated/reviewed  -Rate/ review other users' projects  -Search for projects   -View projects overall score  -View your profile page
 
 You can see the live Application here [Awwawards](https://komo-awwawards.herokuapp.com/).
 
