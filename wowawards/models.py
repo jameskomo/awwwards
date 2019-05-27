@@ -11,6 +11,7 @@ class Image(models.Model):
     profile = models.ForeignKey(Profile, on_delete=models.CASCADE)
     pub_date = models.DateTimeField(auto_now_add=True)
     project_image = models.ImageField(default="default.jpeg", upload_to = 'images/')
+    project_link=models.CharField(max_length=60, null=False)
 
     @classmethod
     def search_by_title(cls,search_term):

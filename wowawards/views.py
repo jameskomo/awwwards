@@ -106,7 +106,7 @@ def search_results(request):
         searched_projects = Image.search_by_project_title(search_term)
         message = f"{search_term}"
 
-        return render(request, 'wowawards/base.html',{"message":message,"projects": searched_projects})
+        return render(request, 'wowawards/base.html',{"message":message,"images": searched_projects})
 
     else:
         message = "You haven't searched for any term"
